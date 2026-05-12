@@ -9,9 +9,11 @@ A simple Java CLI assistant inspired by JARVIS from Iron Man.
 - Jokes
 - Time command
 - Beginner-friendly design
+- Calculator!
 
 ## What I Learned
 - Java loops
 - User input
 - Conditions
 - Methods
+- Try and catch(except) blocks
