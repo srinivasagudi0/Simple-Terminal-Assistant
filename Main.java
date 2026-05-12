@@ -1,7 +1,7 @@
 public class Main {
    public Main() {
    }
-
+   
    public static void main(String[] var0) {
     java.util.Scanner input = new java.util.Scanner(System.in);
     System.out.println("\n");
@@ -69,46 +69,7 @@ public class Main {
         }
 
         if (var1.equalsIgnoreCase("calc")) {
-            System.out.print("First number: ");
-            String firstNumberText = input.nextLine();
-
-            System.out.print("Math sign (+, -, *, /): ");
-            String mathSign = input.nextLine();
-
-            System.out.print("Second number: ");
-            String secondNumberText = input.nextLine();
-
-            double firstNumber;
-            double secondNumber;
-
-            try {
-                firstNumber = Double.parseDouble(firstNumberText);
-                secondNumber = Double.parseDouble(secondNumberText);
-            } catch (Exception e) {
-                System.out.println("Please type numbers only.");
-                continue;
-            }
-
-            if (mathSign.equals("+")) {
-                System.out.println("Answer: " + (firstNumber + secondNumber) + "\n");
-            }
-
-            if (mathSign.equals("-")) {
-                System.out.println("Answer: " + (firstNumber - secondNumber) + "\n");
-            }
-
-            if (mathSign.equals("*")) {
-                System.out.println("Answer: " + (firstNumber * secondNumber) + "\n");
-            }
-
-            if (mathSign.equals("/")) {
-                System.out.println("Answer: " + (firstNumber / secondNumber) + "\n");
-            }
-
-            if (!mathSign.equals("+") && !mathSign.equals("-") && !mathSign.equals("*") && !mathSign.equals("/")) {
-                System.out.println("That math sign does not work.\n");
-            }
-
+            calculator(input);
             continue;
         }
 
@@ -128,5 +89,47 @@ public static void tellJoke() {
         "Why did the bicycle fall over? Because it was two-tired!"
     };
     System.out.println(jokes[(int) (Math.random() * jokes.length)] + "\n");
+}
+
+public static void calculator(java.util.Scanner input) {
+    System.out.print("First number: ");
+    String firstNumberText = input.nextLine();
+
+    System.out.print("Math sign (+, -, *, /): ");
+    String mathSign = input.nextLine();
+
+    System.out.print("Second number: ");
+    String secondNumberText = input.nextLine();
+
+    double firstNumber;
+    double secondNumber;
+
+    try {
+        firstNumber = Double.parseDouble(firstNumberText);
+        secondNumber = Double.parseDouble(secondNumberText);
+    } catch (Exception e) {
+        System.out.println("Please type numbers only.");
+        return;
+    }
+
+    if (mathSign.equals("+")) {
+        System.out.println("Answer: " + (firstNumber + secondNumber) + "\n");
+    }
+
+    if (mathSign.equals("-")) {
+        System.out.println("Answer: " + (firstNumber - secondNumber) + "\n");
+    }
+
+    if (mathSign.equals("*")) {
+        System.out.println("Answer: " + (firstNumber * secondNumber) + "\n");
+    }
+
+    if (mathSign.equals("/")) {
+        System.out.println("Answer: " + (firstNumber / secondNumber) + "\n");
+    }
+
+    if (!mathSign.equals("+") && !mathSign.equals("-") && !mathSign.equals("*") && !mathSign.equals("/")) {
+        System.out.println("That math sign does not work.\n");
+    }
 }
 }

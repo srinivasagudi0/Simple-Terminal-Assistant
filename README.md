@@ -17,3 +17,5 @@ A simple Java CLI assistant inspired by JARVIS from Iron Man.
 - Conditions
 - Methods
 - Try and catch(except) blocks
+- Organize code 
+- Functions
