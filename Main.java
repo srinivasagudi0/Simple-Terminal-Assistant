@@ -1,4 +1,3 @@
-
 public class Main {
    public Main() {
    }
@@ -56,15 +55,7 @@ public class Main {
         }
 
         if (var1.equalsIgnoreCase("joke")) {
-            String[] jokes = {
-                "Why don't scientists trust atoms? Because they make up everything!",
-                "What do you call a fake noodle? An impasta!",
-                "Why did the scarecrow win an award? Because he was outstanding in his field!",
-                "Why don't skeletons fight each other? They don't have the guts!",
-                "What do you call cheese that isn't yours? Nacho cheese!",
-                "Why did the bicycle fall over? Because it was two-tired!"
-            };
-            System.out.println(jokes[(int) (Math.random() * jokes.length)] + "\n");
+            tellJoke();
             continue;
         }
 
@@ -126,5 +117,16 @@ public class Main {
    }
    input.close();
 }
-}
 
+public static void tellJoke() {
+    String[] jokes = {
+        "Why don't scientists trust atoms? Because they make up everything!",
+        "What do you call a fake noodle? An impasta!",
+        "Why did the scarecrow win an award? Because he was outstanding in his field!",
+        "Why don't skeletons fight each other? They don't have the guts!",
+        "What do you call cheese that isn't yours? Nacho cheese!",
+        "Why did the bicycle fall over? Because it was two-tired!"
+    };
+    System.out.println(jokes[(int) (Math.random() * jokes.length)] + "\n");
+}
+}
