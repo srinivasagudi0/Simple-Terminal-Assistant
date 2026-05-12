@@ -24,16 +24,7 @@ public class Main {
         }
 
         if (var1.equalsIgnoreCase("help")) {
-          System.out.println("");
-            System.out.println("Available commands:");
-            System.out.println("- help: Show this help message");
-            System.out.println("- hello: Greet the user");
-            System.out.println("- time: Show the current time");
-            System.out.println("- status: Show system status");
-            System.out.println("- calc: Simple calculator");
-            System.out.println("- joke: Tell a random joke");
-            System.out.println("- motivate: Show a motivational quote");
-            System.out.println("- exit: Exit the Terminal\n");
+            help();
             continue;
         }
 
@@ -131,5 +122,18 @@ public static void calculator(java.util.Scanner input) {
     if (!mathSign.equals("+") && !mathSign.equals("-") && !mathSign.equals("*") && !mathSign.equals("/")) {
         System.out.println("That math sign does not work.\n");
     }
+}
+
+public static void help() {
+    System.out.println("");
+    System.out.println("Available commands:");
+    System.out.println("- help: Show this help message");
+    System.out.println("- hello: Greet the user");
+    System.out.println("- time: Show the current time");
+    System.out.println("- status: Show system status");
+    System.out.println("- calc: Simple calculator");
+    System.out.println("- joke: Tell a random joke");
+    System.out.println("- motivate: Show a motivational quote");
+    System.out.println("- exit: Exit the Terminal\n");
 }
 }
