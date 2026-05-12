@@ -4,12 +4,7 @@ public class Main {
    
    public static void main(String[] var0) {
     java.util.Scanner input = new java.util.Scanner(System.in);
-    System.out.println("\n");
-    System.out.println("Booting up...");
-    System.out.println("System is ready.");
-    System.out.println("\n");
-    System.out.println("Welcome to the Terminal!");
-      // take input
+    startup();
     while (true) {
         System.out.print("Enter a command: ");
         String var1 = input.nextLine();
@@ -51,11 +46,7 @@ public class Main {
         }
 
         if (var1.equalsIgnoreCase("motivate")) {
-            String[] quotes = {
-                "The only way to do great work is to love what you do.",
-                "Believe you can and you're halfway there."
-            };
-            System.out.println(quotes[(int) (Math.random() * quotes.length)] + "\n");
+            motivate();
             continue;
         }
 
@@ -136,4 +127,29 @@ public static void help() {
     System.out.println("- motivate: Show a motivational quote");
     System.out.println("- exit: Exit the Terminal\n");
 }
+
+public static void motivate() {
+    String[] quotes = {
+        "The only way to do great work is to love what you do.",
+        "Believe you can and you're halfway there.",    
+        "If you can dream it, you can do it.",
+        "Don't watch the clock; do what it does. Keep going.",
+        "The future belongs to those who believe in the beauty of their dreams.",
+        "It does not matter how slowly you go as long as you do not stop.",
+        "Success is not final, failure is not fatal: It is the courage to continue that counts.",
+        "The only limit to our realization of tomorrow will be our doubts of today.",
+        "The harder you work for something, the greater you'll feel when you achieve it.",
+        "Don't be pushed around by the fears in your mind. Be led by the dreams in your heart."
+    };
+    System.out.println(quotes[(int) (Math.random() * quotes.length)] + "\n");
 }
+
+public static void startup() {
+    System.out.println("\n");
+    System.out.println("Booting up...");
+    System.out.println("System is ready.");
+    System.out.println("\n");
+    System.out.println("Welcome to the Terminal!");
+}
+}
+
