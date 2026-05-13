@@ -169,4 +169,10 @@ public static void startup() {
     System.out.println("\n");
     System.out.println("Welcome to the Terminal!");
 }
+
+public static void mission() {
+//working on it
+}
+
+
 }
