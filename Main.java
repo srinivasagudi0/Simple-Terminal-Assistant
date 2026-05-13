@@ -2,9 +2,27 @@ public class Main {
    public Main() {
    }
    
-   public static void main(String[] var0) {
+   public static void main(String[] var0) throws Exception {
     java.util.Scanner input = new java.util.Scanner(System.in);
+    java.io.File nameFile = new java.io.File("name.txt");
+    String name;
+
+    if (nameFile.exists()) {
+        java.util.Scanner fileInput = new java.util.Scanner(nameFile);
+        name = fileInput.nextLine();
+        fileInput.close();
+    } else {
+        System.out.print("Enter your name: ");
+        name = input.nextLine();
+
+        java.io.PrintWriter writer = new java.io.PrintWriter(nameFile);
+        writer.println(name);
+        writer.close();
+    }
+
     startup();
+    System.out.println("Welcome back, " + name + ".");
+    
     while (true) {
         System.out.print("Enter a command: ");
         String var1 = input.nextLine();
@@ -152,4 +170,3 @@ public static void startup() {
     System.out.println("Welcome to the Terminal!");
 }
 }
-
