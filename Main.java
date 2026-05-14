@@ -192,7 +192,16 @@ public class Main {
             "Push your project to GitHub",
             "Learn one new Java concept",
             "Drink water and code",
-            "Build something cool!"
+            "Build something cool!",
+            "Take a break and go outside",
+            "Write a good journal entry about your coding journey",
+            "Help someone else with their code",
+            "Refactor a piece of your code to make it cleaner",
+            "Write a test for a piece of your code",
+            "Learn a new programming language",
+            "Contribute to an open source project",
+            "Read a chapter of a programming book",
+            "Redo mission command to get the mission"
         };
         int r = (int)(Math.random() * missions.length);
         return missions[r];
