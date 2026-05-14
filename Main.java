@@ -51,6 +51,7 @@ public class Main {
         // ask name if no file
         System.out.print("What is your name? ");
         String nm = sc.nextLine();
+        System.out.println("");
 
         PrintWriter pw = new PrintWriter(f);
         pw.println(nm);
@@ -179,6 +180,7 @@ public class Main {
         System.out.println("================================");
         System.out.println("             J.A.R.V.I.S             "); 
         System.out.println("================================");
+        System.out.println("");
     }
 
     static String getMission() {
