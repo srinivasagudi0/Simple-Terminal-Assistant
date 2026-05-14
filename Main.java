@@ -7,7 +7,6 @@ public class Main {
 
     // first comment
     static String nameFile = "name.txt";
-    static String missionFile = "mission.txt";
 
     public static void main(String[] args) throws Exception {
 
@@ -27,15 +26,8 @@ public class Main {
     static String getName(Scanner sc) throws Exception {
 
         File f = new File(nameFile);
-        File mf = new File(missionFile);
 
-        // make mission file if not there
-        if (!mf.exists()) {
-            mf.createNewFile();
-            PrintWriter pw = new PrintWriter(mf);
-            pw.println("Explore the new planet"); // default mission lol
-            pw.close();
-        }
+
 
         // check if name file exists
         if (f.exists()) {
