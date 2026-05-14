@@ -129,7 +129,7 @@ public class Main {
             }
         }
     }
-
+    // add settings command that aloows to toggle text animation or speed and change not more but will be helpful in the future as i add more features
     static void showHelp() {
         System.out.println("help - show this message");
         System.out.println("hello - greet the assistant");
@@ -157,7 +157,11 @@ public class Main {
             "Why did the coffee file a police report? It got mugged!",
             "Why did the tomato turn red? Because it saw the salad dressing!",
             "Why did the cookie go to the doctor? Because it was feeling crumbly!",
-            "Why did the computer go to the doctor? Because it had a virus!"
+            "Why did the computer go to the doctor? Because it had a virus!",
+            "Why did programmers hate nature? It has too many bugs!",
+            "Why do Java developers wear glasses? Because they don't see sharp!",
+            "Why did the programmer quit his job? Because he didn't get arrays!",
+            "Why do programmers prefer iOS development? Because on Andriod they have to deal with JAVA!"
         };
 
         int r = (int)(Math.random() * jokes.length);
@@ -218,9 +222,10 @@ public class Main {
             "Success is not in what you have, but who you are.",
             "Don't be pushed around by the fears in your mind. Be led by the dreams in your heart.",
             "Trust yourself. You know more than you think you do.",
-            "The only limit to our realization of tomorrow will be our doubts of today."
+            "The only limit to our realization of tomorrow will be our doubts of today.",
+            "It does not matter how slowly you go as long as you do not stop.",
+            "You are never too old to set another goal or to dream a new dream."
         };
-
         int r = (int)(Math.random() * q.length);
 
         printSlowly(q[r]);
@@ -304,4 +309,23 @@ public class Main {
         }
     }
 
+    static void settings(Scanner sc) {
+        printSlowly("Settings:");
+        printSlowly("1. Toggle text animation");
+        printSlowly("2. Change text animation speed");
+        printSlowly("Enter option number: ");
+        String option = sc.nextLine();
+
+        switch (option) {
+            case "1":
+                // toggle text animation. Will work on this later but for now it is always on and you can change it later
+                break;
+            case "2":
+                // change text animation speed. Will work on this later but for now it is always 50ms and you can change it later
+                break;
+            default:
+                printSlowly("Invalid option");
+                System.out.println();
+        }
+    }
 }
