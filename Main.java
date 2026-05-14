@@ -67,43 +67,52 @@ public class Main {
             // Store command in history
             commandHistory.add(cmd);
 
-            if (cmd.equals("exit")) {
-                System.out.println("Bye!");
-                run = false;
-            }
-            else if (cmd.equals("help")) {
-                showHelp();
-            }
+            switch (cmd) {
+                case "exit":
+                    System.out.println("Bye!");
+                    run = false;
+                    break;
+                
+                case "help":
+                    showHelp();
+                    break;
+                
+                case "mission":
+                    String m = getMission();
+                    System.out.println("Your mission is: " + m);
+                    System.out.println();
+                    break;
+            
+                case "hello":
+                    System.out.println("Hi there!");
+                    System.out.println();
+                    break;
+        
+                case "time":
+                    System.out.println("Time is: " + LocalTime.now());
+                    System.out.println();
+                    break;
+    
+                case "joke":
+                    tellJoke();
+                    break;
 
-            if (cmd.equals("mission")) {
-                String m = getMission();
-                System.out.println("Your mission is: " + m);
-                System.out.println();
-            }
-
-            else if (cmd.equals("hello")) {
-                System.out.println("Hi there!");
-                System.out.println();
-            }
-            else if (cmd.equals("time")) {
-                System.out.println("Time is: " + LocalTime.now());
-                System.out.println();
-            }
-            else if (cmd.equals("joke")) {
-                tellJoke();
-            }
-            else if (cmd.equals("calc")) {
-                doCalc(sc);
-            }
-            else if (cmd.equals("motivate")) {
-                showQuote();
-            }
-            else if (cmd.equals("history")) {
-                showHistory(commandHistory);
-            }
-            else {
-                System.out.println("Unknown command");
-                System.out.println();
+                case "calc":
+                    doCalc(sc);
+                    break;
+        
+                case "motivate":
+                    showQuote();
+                    break;
+        
+                case "history":
+                    showHistory(commandHistory);
+                    break;
+        
+                default:
+                    System.out.println("Unknown command");
+                    System.out.println("Type 'help' to view commands");
+                    System.out.println();
             }
         }
     }
@@ -219,4 +228,5 @@ public class Main {
         }
         System.out.println();
     }
-    }
+
+}
