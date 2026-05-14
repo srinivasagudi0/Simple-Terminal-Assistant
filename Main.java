@@ -75,6 +75,13 @@ public class Main {
             else if (cmd.equals("help")) {
                 showHelp();
             }
+
+            if (cmd.equals("mission")) {
+                String m = getMission();
+                System.out.println("Your mission is: " + m);
+                System.out.println();
+            }
+
             else if (cmd.equals("hello")) {
                 System.out.println("Hi there!");
                 System.out.println();
@@ -100,7 +107,14 @@ public class Main {
     }
 
     static void showHelp() {
-        System.out.println("Commands: help, hello, time, joke, calc, motivate, exit, mission, ");
+        System.out.println("help - show this message");
+        System.out.println("hello - greet the assistant");
+        System.out.println("time - show current time");
+        System.out.println("joke - tell a random joke");
+        System.out.println("calc - simple calculator");
+        System.out.println("motivate - get a motivational quote");
+        System.out.println("mission - get a random mission to work towards");
+
         System.out.println();
     }
 
@@ -162,8 +176,21 @@ public class Main {
     }
 
     static void showStartup() {
-        System.out.println("Starting up...");
-        System.out.println("Welcome to Terminal!");
-        System.out.println();
+        System.out.println("================================");
+        System.out.println("             J.A.R.V.I.S             "); 
+        System.out.println("================================");
     }
-}
+
+    static String getMission() {
+        
+        String[] missions = {
+            "Fix 3 bugs in the code",
+            "Push your project to GitHub",
+            "Learn one new Java concept",
+            "Drink water and code",
+            "Build something cool!"
+        };
+        int r = (int)(Math.random() * missions.length);
+        return missions[r];
+    }
+    }
