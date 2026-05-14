@@ -24,4 +24,5 @@ A simple Java CLI assistant inspired by JARVIS from Iron Man.
 - Cleaning code even after a long time
 - Comments
 - Arrays
-- import function 
+- import function
+- typing animation (Coolest feature but not hard) 

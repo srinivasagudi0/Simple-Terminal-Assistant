@@ -18,7 +18,7 @@ public class Main {
 
         showStartup();
 
-        System.out.println("Welcome back " + userName + "!");
+        printSlowly("Welcome back " + userName + "!");
 
         runCommands(sc);
 
@@ -43,7 +43,7 @@ public class Main {
         }
 
         // ask name if no file
-        System.out.print("What is your name? ");
+        printSlowly("What is your name? ");
         String nm = sc.nextLine();
         System.out.println("");
 
@@ -61,7 +61,7 @@ public class Main {
 
         while (run) {
 
-            System.out.print("Enter command: ");
+            System.out.println("Enter command: ");
             String cmd = sc.nextLine();
 
             // Store command in history
@@ -69,7 +69,7 @@ public class Main {
 
             switch (cmd) {
                 case "exit":
-                    System.out.println("Bye!");
+                    printSlowly("Bye!");
                     run = false;
                     break;
                 
@@ -79,17 +79,17 @@ public class Main {
                 
                 case "mission":
                     String m = getMission();
-                    System.out.println("Your mission is: " + m);
+                    printSlowly("Your mission is: " + m);
                     System.out.println();
                     break;
             
                 case "hello":
-                    System.out.println("Hi there!");
+                    printSlowly("Hi there!");
                     System.out.println();
                     break;
         
                 case "time":
-                    System.out.println("Time is: " + LocalTime.now());
+                    printSlowly("Time is: " + LocalTime.now());
                     System.out.println();
                     break;
     
@@ -110,8 +110,8 @@ public class Main {
                     break;
         
                 default:
-                    System.out.println("Unknown command");
-                    System.out.println("Type 'help' to view commands");
+                    printSlowly("Unknown command");
+                    printSlowly("Type 'help' to view commands");
                     System.out.println();
             }
         }
@@ -138,7 +138,7 @@ public class Main {
 
         int r = (int)(Math.random() * jokes.length);
 
-        System.out.println(jokes[r]);
+        printSlowly(jokes[r]);
         System.out.println();
     }
 
@@ -163,14 +163,14 @@ public class Main {
             ans = a * b;
         } else if (op.equals("/")) {
             if (b == 0) {
-                System.out.println("Cannot divide by zero");
+                printSlowly("Cannot divide by zero");
                 System.out.println();
                 return;
             }
             ans = a / b;
         }
 
-        System.out.println("Result: " + ans);
+        printSlowly("Result: " + ans);
         System.out.println();
     }
 
@@ -183,15 +183,15 @@ public class Main {
 
         int r = (int)(Math.random() * q.length);
 
-        System.out.println(q[r]);
+        printSlowly(q[r]);
         System.out.println();
     }
 
     static void showStartup() {
-        System.out.println("================================");
-        System.out.println("             J.A.R.V.I.S             "); 
-        System.out.println("================================");
-        System.out.println("");
+        printSlowly("================================");
+        printSlowly("             J.A.R.V.I.S             "); 
+        printSlowly("================================");
+        printSlowly("");
     }
 
     static String getMission() {
@@ -219,11 +219,24 @@ public class Main {
     // dont know why you would want to see the history but here it is
     static void showHistory(ArrayList<String> history) {
         if (history.isEmpty()) {
-            System.out.println("No command history yet!");
+            printSlowly("No command history yet!");
         } else {
-            System.out.println("Command History:");
+            printSlowly("Command History:");
             for (int i = 0; i < history.size(); i++) {
                 System.out.println((i + 1) + ". " + history.get(i));
+            }
+        }
+        System.out.println();
+    }
+
+    static void printSlowly(String text) {
+        for (char c : text.toCharArray()) {
+            System.out.print(c);
+            System.out.flush();
+            try {
+                Thread.sleep(50);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
             }
         }
         System.out.println();
