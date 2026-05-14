@@ -62,7 +62,7 @@ public class Main {
         while (run) {
 
             System.out.println("Enter command: ");
-            String cmd = sc.nextLine("> ").toLowerCase();
+            String cmd = sc.nextLine();
 
             // Store command in history
             commandHistory.add(cmd);
@@ -278,7 +278,7 @@ public class Main {
         }
         System.out.println();
     }
-// ask if he/she is sure they want to clear console and if yes then clear it
+
     static void clearConsole() {
         System.out.print("\033[H\033[2J");
         System.out.flush();
