@@ -1,6 +1,8 @@
+// wierd that you have to import simple stufff that is like built in in python but whatever
 import java.io.File;
 import java.io.PrintWriter;
 import java.time.LocalTime;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
@@ -55,11 +57,15 @@ public class Main {
     static void runCommands(Scanner sc) {
 
         boolean run = true;
+        ArrayList<String> commandHistory = new ArrayList<>();
 
         while (run) {
 
             System.out.print("Enter command: ");
             String cmd = sc.nextLine();
+
+            // Store command in history
+            commandHistory.add(cmd);
 
             if (cmd.equals("exit")) {
                 System.out.println("Bye!");
@@ -92,6 +98,9 @@ public class Main {
             else if (cmd.equals("motivate")) {
                 showQuote();
             }
+            else if (cmd.equals("history")) {
+                showHistory(commandHistory);
+            }
             else {
                 System.out.println("Unknown command");
                 System.out.println();
@@ -107,6 +116,7 @@ public class Main {
         System.out.println("calc - simple calculator");
         System.out.println("motivate - get a motivational quote");
         System.out.println("mission - get a random mission to work towards");
+        System.out.println("history - show command history of this current session");
 
         System.out.println();
     }
@@ -186,5 +196,18 @@ public class Main {
         };
         int r = (int)(Math.random() * missions.length);
         return missions[r];
+    }
+
+    // dont know why you would want to see the history but here it is
+    static void showHistory(ArrayList<String> history) {
+        if (history.isEmpty()) {
+            System.out.println("No command history yet!");
+        } else {
+            System.out.println("Command History:");
+            for (int i = 0; i < history.size(); i++) {
+                System.out.println((i + 1) + ". " + history.get(i));
+            }
+        }
+        System.out.println();
     }
     }
