@@ -67,7 +67,7 @@ public class Main {
             // Store command in history
             commandHistory.add(cmd);
 
-            switch (cmd) {
+            switch (cmd.toLowerCase()) {
                 case "exit":
                     printSlowly("Bye!");
                     run = false;
@@ -95,6 +95,10 @@ public class Main {
     
                 case "joke":
                     tellJoke();
+                    break;
+                
+                case "changeUser":
+                    changeUsername(sc);
                     break;
 
                 case "clear":
@@ -135,6 +139,7 @@ public class Main {
         System.out.println("motivate - get a motivational quote");
         System.out.println("mission - get a random mission to work towards");
         System.out.println("history - show command history of this current session");
+        System.out.println("changeUser - change the user name (will overwrite old name)");
         System.out.println("clear (Mac exclusive) - clear the console");
         System.out.println("exit - exit the program");
 
@@ -224,7 +229,7 @@ public class Main {
 
     static void showStartup() {
         printSlowly("================================");
-        printSlowly("             J.A.R.V.I.S             "); 
+        printSlowly("             J.A.R.V.I.S"); 
         printSlowly("================================");
         printSlowly("");
     }
@@ -282,6 +287,21 @@ public class Main {
     static void clearConsole() {
         System.out.print("\033[H\033[2J");
         System.out.flush();
+    }
+
+    static void changeUsername(Scanner sc) {
+        try {
+            File f = new File(nameFile);
+            if (f.exists()) {
+                f.delete();
+            }
+            String newName = getName(sc);
+            printSlowly("Name changed to " + newName);
+            System.out.println();
+        } catch (Exception e) {
+            printSlowly("Error changing name");
+            System.out.println();
+        }
     }
 
 }
