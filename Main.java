@@ -132,8 +132,16 @@ public class Main {
 
     static void tellJoke() {
         String[] jokes = {
-            "Why did the chicken cross the road?",
-            "What's a computer's favorite snack?"
+            "Why don't scientists trust atoms? Because they make up everything!",
+            "Why did the scarecrow win an award? Because he was outstanding in his field!",
+            "Why did the bicycle fall over? Because it was two-tired!",
+            "What do you call fake spaghetti? An impasta!",
+            "Why did the math book look sad? Because it had too many problems!",
+            "Why do programmers prefer dark mode? Because light attracts bugs!",
+            "Why did the coffee file a police report? It got mugged!",
+            "Why did the tomato turn red? Because it saw the salad dressing!",
+            "Why did the cookie go to the doctor? Because it was feeling crumbly!",
+            "Why did the computer go to the doctor? Because it had a virus!"
         };
 
         int r = (int)(Math.random() * jokes.length);
