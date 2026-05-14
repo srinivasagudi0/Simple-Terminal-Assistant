@@ -186,7 +186,20 @@ public class Main {
         String[] q = {
             "Never give up!",
             "You got this!",
-            "Keep trying!"
+            "Keep trying!",
+            "Believe in yourself!",
+            "Every day is a new opportunity to learn and grow.",
+            "Do not be afraid to make mistakes, they are a part of the learning process.",
+            "Success is not final, failure is not fatal: It is the courage to continue that counts.",
+            "The only way to do great work is to love what you do.",
+            "The future belongs to those who believe in the beauty of their dreams.",
+            "Don't watch the clock; do what it does. Keep going.",
+            "The harder you work for something, the greater you'll feel when you achieve it.",
+            "Dream big and dare to fail.",
+            "Success is not in what you have, but who you are.",
+            "Don't be pushed around by the fears in your mind. Be led by the dreams in your heart.",
+            "Trust yourself. You know more than you think you do.",
+            "The only limit to our realization of tomorrow will be our doubts of today."
         };
 
         int r = (int)(Math.random() * q.length);
