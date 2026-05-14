@@ -97,8 +97,17 @@ public class Main {
                     tellJoke();
                     break;
 
+                case "clear":
+                    clearConsole();
+                    break;
+
                 case "calc":
-                    doCalc(sc);
+                    try {
+                        doCalc(sc);
+                    } catch (Exception e) {
+                        printSlowly("Invalid input for calculator");
+                        System.out.println();
+                    }
                     break;
         
                 case "motivate":
@@ -126,6 +135,8 @@ public class Main {
         System.out.println("motivate - get a motivational quote");
         System.out.println("mission - get a random mission to work towards");
         System.out.println("history - show command history of this current session");
+        System.out.println("clear (Mac exclusive) - clear the console");
+        System.out.println("exit - exit the program");
 
         System.out.println();
     }
@@ -152,6 +163,9 @@ public class Main {
 
     static void doCalc(Scanner sc) {
 
+        System.out.println("Simple Calculator");
+        System.out.println();
+        
         System.out.print("Number 1: ");
         double a = Double.parseDouble(sc.nextLine());
 
@@ -242,6 +256,8 @@ public class Main {
         if (history.isEmpty()) {
             printSlowly("No command history yet!");
         } else {
+            String a = "Commands used:" + history.size();
+            printSlowly(a);
             printSlowly("Command History:");
             for (int i = 0; i < history.size(); i++) {
                 System.out.println((i + 1) + ". " + history.get(i));
@@ -261,6 +277,11 @@ public class Main {
             }
         }
         System.out.println();
+    }
+
+    static void clearConsole() {
+        System.out.print("\033[H\033[2J");
+        System.out.flush();
     }
 
 }
