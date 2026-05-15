@@ -302,6 +302,18 @@ public class Main {
         }
     }
 
+    static void clearHistory() {
+        try {
+            PrintWriter pw = new PrintWriter(new File("history.txt"));
+            pw.close();
+            printSlowly("History cleared");
+            System.out.println();
+        } catch (Exception e) {
+            System.out.println("Error clearing history");
+            System.out.println();
+        }
+    }
+
     static void printSlowly(String text) {
         for (char c : text.toCharArray()) {
             System.out.print(c);
@@ -341,7 +353,7 @@ public class Main {
         printSlowly("2. Change text animation speed");
         printSlowly("3. Change user name");
         printSlowly("4. Clear command history");
-        printSlowly("4. Back to main menu");
+        printSlowly("5. Back to main menu");
         printSlowly("Enter option number: ");
         String option = sc.nextLine();
 
@@ -355,7 +367,15 @@ public class Main {
             case "3":
                 changeUsername(sc);
                 break;
-                
+            
+            case "4":
+                clearHistory();
+                break;
+
+            case "5":
+                // back to main menu
+                break;
+
             default:
                 printSlowly("Invalid option");
                 System.out.println();
