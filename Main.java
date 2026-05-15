@@ -10,6 +10,10 @@ public class Main {
     // first comment
     static String nameFile = "name.txt";
 
+    static final String RESET = "\033[0m";
+    static final String RED_BG = "\033[41m";
+    static final String WHITE_TEXT = "\u001B[37m";
+
     public static void main(String[] args) throws Exception {
 
         Scanner sc = new Scanner(System.in);
@@ -241,9 +245,9 @@ public class Main {
     }
 
     static void showStartup() {
-        printSlowly("================================");
-        printSlowly("             J.A.R.V.I.S"); 
-        printSlowly("================================");
+        printSlowly(RED_BG+ WHITE_TEXT + "================================" + RESET);
+        printSlowly(RED_BG+ WHITE_TEXT + "             J.A.R.V.I.S" + RESET); 
+        printSlowly(RED_BG+ WHITE_TEXT + "================================" + RESET);
         printSlowly("");
     }
 
@@ -364,6 +368,7 @@ public class Main {
         printSlowly("4. Clear command history");
         printSlowly("5. Back to main menu");
         printSlowly("Enter option number: ");
+        // Add what theme they want (but for now since there is only one theme it will just be a placeholder for the future when I add more themes)
         String option = sc.nextLine();
 
         
