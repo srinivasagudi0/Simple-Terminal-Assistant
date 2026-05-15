@@ -69,6 +69,9 @@ public class Main {
 
             switch (cmd.toLowerCase()) {
                 case "exit":
+                    // save history before exiting.
+                    historyFile(commandHistory);
+
                     printSlowly("Bye!");
                     run = false;
                     break;
@@ -272,8 +275,26 @@ public class Main {
             for (int i = 0; i < history.size(); i++) {
                 System.out.println((i + 1) + ". " + history.get(i));
             }
+
         }
+        // add a 
         System.out.println();
+    }
+    //writes the command history to a file called history.txt. Will be useful in the future when I add more features and want to keep track of them
+    static void historyFile(ArrayList<String> history) {
+        try {
+            PrintWriter pw = new PrintWriter(new File("history.txt"));
+            for (String cmd: history) {
+                pw.println(cmd);
+            }
+
+            pw.close();
+            printSlowly("History saved to history.txt");
+            System.out.println();
+        } catch (Exception e) {
+            System.out.println("Error saving history");
+            System.out.println();
+        }
     }
 
     static void printSlowly(String text) {
@@ -321,7 +342,7 @@ public class Main {
                 // toggle text animation. Will work on this later but for now it is always on and you can change it later
                 break;
             case "2":
-                // change text animation speed. Will work on this later but for now it is always 50ms and you can change it later
+                // this is lot harder than you think, but will change it and make it work later. For now the speed is always 50ms per chrarecter, I mean comeone, it is not that bad
                 break;
             default:
                 printSlowly("Invalid option");
@@ -329,3 +350,4 @@ public class Main {
         }
     }
 }
+//  
