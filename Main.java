@@ -366,33 +366,14 @@ public class Main {
         printSlowly("Enter option number: ");
         String option = sc.nextLine();
 
-        //should probably add error handling + make it organized but for now this is fine and it works so whatever
+        
         switch (option) {
             case "1":
-                animationEnabled = !animationEnabled;
-                String status = animationEnabled ? "enabled" : "disabled";
-                printSlowly("Text animation set to " + status);
-                System.out.println();
+                toggleAnimation();
                 break;
             case "2":
                 printSlowly("Enter new animation speed in milliseconds per character (e.g. 50): ");
-                try {
-                    int newSpeed = Integer.parseInt(sc.nextLine());
-                    if (newSpeed < 0) {
-                        printSlowly("Animation speed cannot be negative");
-                        System.out.println();
-                    } else {
-                        animationSpeed = newSpeed;
-                        printSlowly("Animation speed set to " + animationSpeed + " ms/char");
-                        System.out.println();
-                    }
-                } catch (NumberFormatException e) {
-                    printSlowly("Invalid input for animation speed");
-                    System.out.println();
-                } catch (Exception e) {
-                    printSlowly("Error changing animation speed" + e.getMessage());
-                    System.out.println();
-                } // learned this type of error handling from python and it is really useful.
+                
                 break;
             case "3":
                 changeUsername(sc);
@@ -411,4 +392,34 @@ public class Main {
                 System.out.println();
         }
     }
+
+    static void toggleAnimation() {
+        animationEnabled = !animationEnabled;
+        String status = animationEnabled ? "enabled" : "disabled";
+        printSlowly("Text animation set to " + status);
+        System.out.println();
+    }
+
+    static void changeSpeed(Scanner sc) {
+        try {
+            int newSpeed = Integer.parseInt(sc.nextLine());
+        
+            
+            if (newSpeed < 0) {
+                printSlowly("Animation speed cannot be negative");
+                System.out.println();
+                } else {
+                    animationSpeed = newSpeed;
+                    printSlowly("Animation speed set to " + animationSpeed + " ms/char");
+                    System.out.println();
+                }
+                } catch (NumberFormatException e) {
+                    printSlowly("Invalid input for animation speed");
+                    System.out.println();
+                } catch (Exception e) {
+                    printSlowly("Error changing animation speed" + e.getMessage());
+                    System.out.println();
+                } // learned this type of error handling from python and it is really useful.
+    }
+
 }
