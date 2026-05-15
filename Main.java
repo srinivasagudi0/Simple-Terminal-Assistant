@@ -314,12 +314,20 @@ public class Main {
         }
     }
 
+    static boolean animationEnabled = true;
+
     static void printSlowly(String text) {
+        
         for (char c : text.toCharArray()) {
             System.out.print(c);
             System.out.flush();
             try {
-                Thread.sleep(50);
+                if (animationEnabled) {
+                    Thread.sleep(50); // default speed is 50ms per character
+                }
+                else {
+                    Thread.sleep(0); // no animation, print instantly
+                }
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
@@ -359,7 +367,10 @@ public class Main {
 
         switch (option) {
             case "1":
-                // toggle text animation. Will work on this later but for now it is always on and you can change it later
+                animationEnabled = !animationEnabled;
+                String status = animationEnabled ? "enabled" : "disabled";
+                printSlowly("Text animation set to " + status);
+                System.out.println();
                 break;
             case "2":
                 // this is lot harder than you think, but will change it and make it work later. For now the speed is always 50ms per chrarecter, I mean comeone, it is not that bad
