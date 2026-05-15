@@ -315,6 +315,7 @@ public class Main {
     }
 
     static boolean animationEnabled = true;
+    static int animationSpeed = 50; // default speed in milliseconds per character
 
     static void printSlowly(String text) {
         
@@ -323,7 +324,7 @@ public class Main {
             System.out.flush();
             try {
                 if (animationEnabled) {
-                    Thread.sleep(50); // default speed is 50ms per character
+                    Thread.sleep(animationSpeed); // default speed is 50ms per character
                 }
                 else {
                     Thread.sleep(0); // no animation, print instantly
@@ -365,6 +366,7 @@ public class Main {
         printSlowly("Enter option number: ");
         String option = sc.nextLine();
 
+        //should probably add error handling + make it organized but for now this is fine and it works so whatever
         switch (option) {
             case "1":
                 animationEnabled = !animationEnabled;
@@ -373,7 +375,24 @@ public class Main {
                 System.out.println();
                 break;
             case "2":
-                // this is lot harder than you think, but will change it and make it work later. For now the speed is always 50ms per chrarecter, I mean comeone, it is not that bad
+                printSlowly("Enter new animation speed in milliseconds per character (e.g. 50): ");
+                try {
+                    int newSpeed = Integer.parseInt(sc.nextLine());
+                    if (newSpeed < 0) {
+                        printSlowly("Animation speed cannot be negative");
+                        System.out.println();
+                    } else {
+                        animationSpeed = newSpeed;
+                        printSlowly("Animation speed set to " + animationSpeed + " ms/char");
+                        System.out.println();
+                    }
+                } catch (NumberFormatException e) {
+                    printSlowly("Invalid input for animation speed");
+                    System.out.println();
+                } catch (Exception e) {
+                    printSlowly("Error changing animation speed" + e.getMessage());
+                    System.out.println();
+                } // learned this type of error handling from python and it is really useful.
                 break;
             case "3":
                 changeUsername(sc);
