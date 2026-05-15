@@ -120,7 +120,7 @@ public class Main {
                     try {
                         doCalc(sc);
                     } catch (Exception e) {
-                        printSlowly("Invalid input for calculator");
+                        printSlowly(RED_BG+ WHITE_TEXT + "Invalid input for calculator" + RESET);
                         System.out.println();
                     }
                     break;
@@ -134,14 +134,15 @@ public class Main {
                     break;
         
                 default:
-                    printSlowly("Unknown command");
-                    printSlowly("Type 'help' to view commands");
+                    printSlowly(RED_BG+ WHITE_TEXT + "Unknown command" + RESET);
+                    printSlowly(RED_BG+ WHITE_TEXT + "Type 'help' to view commands" + RESET);
                     System.out.println();
             }
         }
     }
     // add settings command that aloows to toggle text animation or speed and change not more but will be helpful in the future as i add more features
     static void showHelp() {
+        System.out.println(RED_BG+ WHITE_TEXT + "=========== Help Menu ===========" + RESET);
         System.out.println("help - show this message");
         System.out.println("hello - greet the assistant");
         System.out.println("time - show current time");
@@ -361,7 +362,7 @@ public class Main {
     }
 
     static void settings(Scanner sc) {
-        printSlowly("Settings:");
+        printSlowly(RED_BG+ WHITE_TEXT + "Settings:" + RESET);
         printSlowly("1. Toggle text animation");
         printSlowly("2. Change text animation speed");
         printSlowly("3. Change user name");
