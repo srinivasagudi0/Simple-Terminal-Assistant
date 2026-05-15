@@ -108,6 +108,10 @@ public class Main {
                     clearConsole();
                     break;
 
+                case "settings":
+                    settings(sc);
+                    break;
+
                 case "calc":
                     try {
                         doCalc(sc);
@@ -143,6 +147,7 @@ public class Main {
         System.out.println("mission - get a random mission to work towards");
         System.out.println("history - show command history of this current session");
         System.out.println("changeUser - change the user name (will overwrite old name)");
+        System.out.println("settings - change settings (coming soon)");
         System.out.println("clear (Mac exclusive) - clear the console");
         System.out.println("exit - exit the program");
 
@@ -334,6 +339,9 @@ public class Main {
         printSlowly("Settings:");
         printSlowly("1. Toggle text animation");
         printSlowly("2. Change text animation speed");
+        printSlowly("3. Change user name");
+        printSlowly("4. Clear command history");
+        printSlowly("4. Back to main menu");
         printSlowly("Enter option number: ");
         String option = sc.nextLine();
 
@@ -344,10 +352,13 @@ public class Main {
             case "2":
                 // this is lot harder than you think, but will change it and make it work later. For now the speed is always 50ms per chrarecter, I mean comeone, it is not that bad
                 break;
+            case "3":
+                changeUsername(sc);
+                break;
+                
             default:
                 printSlowly("Invalid option");
                 System.out.println();
         }
     }
 }
-//  
