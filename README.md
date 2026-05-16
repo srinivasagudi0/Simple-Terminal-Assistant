@@ -1,6 +1,6 @@
 # Simple-Terminal-Assistant V1.0
 
-A simple Java CLI assistant inspired by JARVIS from Iron Man.
+A simple Java CLI assistant inspired by JARVIS from Iron Man. I created this project in order to learn a language.
 
 ## Features
 
