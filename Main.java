@@ -14,6 +14,7 @@ public class Main {
     static final String RESET = "\033[0m";
     static final String RED_BG = "\033[41m";
     static final String WHITE_TEXT = "\u001B[37m";
+    static final String BLUE_STRING = "\u001B[34m";
     // end banner
 
     public static void main(String[] args) throws Exception {
@@ -22,9 +23,9 @@ public class Main {
 
         String userName = getName(sc);
 
-        showStartup();
-
         setTheme(RED_BG);
+
+        showStartup();
 
         printSlowly("Welcome back " + userName + "!");
 
@@ -71,7 +72,7 @@ public class Main {
 
         while (run) {
 
-            System.out.println("Enter command: ");
+            System.out.println(RED_BG + WHITE_TEXT + "Enter command: " + RESET);
             String cmd = sc.nextLine();
 
             // Store command in history
@@ -126,7 +127,7 @@ public class Main {
                     try {
                         doCalc(sc);
                     } catch (Exception e) {
-                        printSlowly(RED_BG+ WHITE_TEXT + "Invalid input for calculator" + RESET);
+                        printSlowly("Invalid input for calculator" + RESET);
                         System.out.println();
                     }
                     break;
@@ -140,7 +141,7 @@ public class Main {
                     break;
         
                 default:
-                    printSlowly(RED_BG+ WHITE_TEXT + "Unknown command" + RESET);
+                    printSlowly(BLUE_STRING+ WHITE_TEXT + "Unknown command" + RESET);
                     printSlowly(RED_BG+ WHITE_TEXT + "Type 'help' to view commands" + RESET);
                     System.out.println();
             }
@@ -331,7 +332,7 @@ public class Main {
     static void printSlowly(String text) {
         
         for (char c : text.toCharArray()) {
-            System.out.print(c);
+            System.out.print(RED_BG + WHITE_TEXT + c + RESET);
             System.out.flush();
             try {
                 if (animationEnabled) {
@@ -348,7 +349,9 @@ public class Main {
     }
 
     static void clearConsole() {
-        System.out.print("\033[H\033[2J");
+        System.out.print("\033[H\033[2J"); // Clear screen
+        System.out.flush();
+        System.out.print(RED_BG);         // Reapply theme
         System.out.flush();
     }
 
@@ -367,44 +370,43 @@ public class Main {
         }
     }
 
-    static void settings(Scanner sc) {
-        printSlowly(RED_BG+ WHITE_TEXT + "Settings:" + RESET);
-        printSlowly("1. Toggle text animation");
-        printSlowly("2. Change text animation speed");
-        printSlowly("3. Change user name");
-        printSlowly("4. Clear command history");
-        printSlowly("5. Back to main menu");
-        printSlowly("Enter option number: ");
-        // Add what theme they want (but for now since there is only one theme it will just be a placeholder for the future when I add more themes)
-        String option = sc.nextLine();
-
+        static void settings(Scanner sc) {
+            boolean inSettings = true;
         
-        switch (option) {
-            case "1":
-                toggleAnimation();
-                break;
-            case "2":
-                printSlowly("Enter new animation speed in milliseconds per character (e.g. 50): ");
-                
-                break;
-            case "3":
-                changeUsername(sc);
-                break;
-            
-            case "4":
-                clearHistory();
-                break;
-
-            case "5":
-                // back to main menu
-                break;
-
-            default:
-                printSlowly("Invalid option");
-                System.out.println();
+        
+            while (inSettings) {
+                printSlowly(RED_BG + WHITE_TEXT + "Settings:" + RESET);
+                printSlowly("1. Toggle text animation");
+                printSlowly("2. Change text animation speed");
+                printSlowly("3. Change user name");
+                printSlowly("4. Clear command history");
+                printSlowly("5. Back to main menu");
+                printSlowly("Enter option number: ");
+                String option = sc.nextLine();
+    
+                switch (option) {
+                    case "1":
+                        toggleAnimation();
+                        break;
+                    case "2":
+                        printSlowly("Enter new animation speed in milliseconds per character (e.g. 50): ");
+                        changeSpeed(sc);
+                        break;
+                    case "3":
+                        changeUsername(sc);
+                        break;
+                    case "4":
+                        clearHistory();
+                        break;
+                    case "5":
+                        inSettings = false;
+                        break;
+                    default:
+                        printSlowly("Invalid option");
+                        System.out.println();
+            }
         }
     }
-
     static void toggleAnimation() {
         animationEnabled = !animationEnabled;
         String status = animationEnabled ? "enabled" : "disabled";

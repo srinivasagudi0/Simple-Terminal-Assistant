@@ -1,6 +1,3 @@
-help
-settingss
-settings
-[A[B[A
-settings
+Hello
+WHat
 exit
