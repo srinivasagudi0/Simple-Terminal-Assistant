@@ -133,7 +133,7 @@ public class Main {
                     System.out.println();
                     break;
 
-                case "changeUser":
+                case "changeuser":
                     changeUsername(sc);
                     break;
 
