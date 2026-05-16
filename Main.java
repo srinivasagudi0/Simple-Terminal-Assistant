@@ -127,7 +127,7 @@ public class Main {
                     try {
                         doCalc(sc);
                     } catch (Exception e) {
-                        printSlowly("Invalid input for calculator" + RESET);
+                        printSlowly(RED_BG + WHITE_TEXT + "Invalid input for calculator" + RESET);
                         System.out.println();
                     }
                     break;
@@ -141,7 +141,7 @@ public class Main {
                     break;
         
                 default:
-                    printSlowly(BLUE_STRING+ WHITE_TEXT + "Unknown command" + RESET);
+                    printSlowly(RED_BG+ WHITE_TEXT + "Unknown command" + RESET);
                     printSlowly(RED_BG+ WHITE_TEXT + "Type 'help' to view commands" + RESET);
                     System.out.println();
             }
@@ -214,7 +214,7 @@ public class Main {
             ans = a * b;
         } else if (op.equals("/")) {
             if (b == 0) {
-                printSlowly("Cannot divide by zero");
+                printSlowly(RED_BG+ WHITE_TEXT + "Cannot divide by zero" + RESET);
                 System.out.println();
                 return;
             }
@@ -309,7 +309,7 @@ public class Main {
             printSlowly("History saved to history.txt");
             System.out.println();
         } catch (Exception e) {
-            System.out.println("Error saving history");
+            System.out.println(RED_BG + WHITE_TEXT + "Error saving history" + RESET);
             System.out.println();
         }
     }
@@ -321,7 +321,7 @@ public class Main {
             printSlowly("History cleared");
             System.out.println();
         } catch (Exception e) {
-            System.out.println("Error clearing history");
+            System.out.println(RED_BG + WHITE_TEXT + "Error clearing history" + RESET);
             System.out.println();
         }
     }
@@ -365,7 +365,7 @@ public class Main {
             printSlowly("Name changed to " + newName);
             System.out.println();
         } catch (Exception e) {
-            printSlowly("Error changing name");
+            printSlowly(RED_BG + WHITE_TEXT + "Error changing name" + RESET);
             System.out.println();
         }
     }
@@ -402,7 +402,7 @@ public class Main {
                         inSettings = false;
                         break;
                     default:
-                        printSlowly("Invalid option");
+                        printSlowly(RED_BG + WHITE_TEXT + "Invalid option" + RESET);
                         System.out.println();
             }
         }
@@ -420,7 +420,7 @@ public class Main {
         
             
             if (newSpeed < 0) {
-                printSlowly("Animation speed cannot be negative");
+                printSlowly(RED_BG + WHITE_TEXT + "Animation speed cannot be negative" + RESET);
                 System.out.println();
                 } else {
                     animationSpeed = newSpeed;
@@ -428,10 +428,10 @@ public class Main {
                     System.out.println();
                 }
                 } catch (NumberFormatException e) {
-                    printSlowly("Invalid input for animation speed");
+                    printSlowly(RED_BG + WHITE_TEXT + "Invalid input for animation speed" + RESET);
                     System.out.println();
                 } catch (Exception e) {
-                    printSlowly("Error changing animation speed" + e.getMessage());
+                    printSlowly(RED_BG + WHITE_TEXT + "Error changing animation speed" + e.getMessage() + RESET);
                     System.out.println();
                 } // learned this type of error handling from python and it is really useful.
     }
