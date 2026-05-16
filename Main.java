@@ -15,6 +15,16 @@ public class Main {
     static final String RED_BG = "\033[41m";
     static final String WHITE_TEXT = "\u001B[37m";
     static final String BLUE_STRING = "\u001B[34m";
+    static final String RESET_TERMINAL_COLORS = "\033]110\007\033]111\007";
+    static final String RED_THEME = "\033]10;#ffffff\007\033]11;#7f1d1d\007";
+    static final String GREEN_THEME = "\033]10;#d1fae5\007\033]11;#064e3b\007";
+    static final String BLUE_THEME = "\033]10;#dbeafe\007\033]11;#1e3a8a\007";
+    static final String CYBERPUNK_THEME = "\033]10;#00f5ff\007\033]11;#16001e\007";
+    static final String GREEN_TEXT = "\033[92m";
+    static final String BRIGHT_WHITE_TEXT = "\033[97m";
+    static final String CYBERPUNK_TEXT = "\033[96m";
+    static String currentTerminalTheme = "";
+    static String currentTheme = "";
     // end banner
 
     public static void main(String[] args) throws Exception {
@@ -23,7 +33,7 @@ public class Main {
 
         String userName = getName(sc);
 
-        setTheme(RED_BG);
+        //setTheme(RED_BG);
 
         showStartup();
 
@@ -82,9 +92,13 @@ public class Main {
                 case "exit":
                     // save history before exiting.
                     historyFile(commandHistory);
-
-                    printSlowly("Bye!");
+                    currentTheme = "";
+                    currentTerminalTheme = "";
+                    System.out.print(RESET + RESET_TERMINAL_COLORS);
+                    System.out.flush();
                     run = false;
+                    printSlowly("Bye!");
+                    
                     break;
                 
                 case "help":
@@ -332,7 +346,7 @@ public class Main {
     static void printSlowly(String text) {
         
         for (char c : text.toCharArray()) {
-            System.out.print(RED_BG + WHITE_TEXT + c + RESET); ////////////////////////// change this to fit the theme of the terminal (will add more themes in the future)
+            System.out.print(c); ////////////////////////// change this to fit the theme of the terminal (will add more themes in the future)
             System.out.flush();
             try {
                 if (animationEnabled) {
@@ -346,12 +360,13 @@ public class Main {
             }
         }
         System.out.println();
+        System.out.print(currentTheme);
     }
 
     static void clearConsole() {
-        System.out.print("\033[H\033[2J"); // Clear screen
-        System.out.flush();
-        System.out.print(RED_BG);         // Reapply theme not just red background theme for now but will add more themes in the future
+        System.out.print(currentTerminalTheme);
+        System.out.print(currentTheme);         // Reapply theme not just red background theme for now but will add more themes in the future
+        System.out.print("\033[H\033[2J\033[3J"); // Clear screen
         System.out.flush();
     }
 
@@ -379,8 +394,9 @@ public class Main {
                 printSlowly("1. Toggle text animation");
                 printSlowly("2. Change text animation speed");
                 printSlowly("3. Change user name");
-                printSlowly("4. Clear command history");
-                printSlowly("5. Back to main menu");
+                printSlowly("4. Change theme");
+                printSlowly("5. Clear command history");
+                printSlowly("6. Back to main menu");
                 printSlowly("Enter option number: ");
                 String option = sc.nextLine();
     
@@ -396,9 +412,44 @@ public class Main {
                         changeUsername(sc);
                         break;
                     case "4":
-                        clearHistory();
+                        printSlowly("Available themes:");
+                        printSlowly("1. None (default)");
+                        printSlowly("2. Red");
+                        printSlowly("3. Green");
+                        printSlowly("4. Blue");
+                        printSlowly("5. Cyberpunk");
+                        printSlowly("Enter theme number: ");
+                        try {
+                            int themeOption = Integer.parseInt(sc.nextLine());
+                            switch (themeOption) {
+                                case 1:
+                                    setTheme("", "");
+                                    break;
+                                case 2:
+                                    setTheme(RED_THEME, WHITE_TEXT);
+                                    break;
+                                case 3:
+                                    setTheme(GREEN_THEME, GREEN_TEXT);
+                                    break;
+                                case 4:
+                                    setTheme(BLUE_THEME, BRIGHT_WHITE_TEXT);
+                                    break;
+                                case 5:
+                                    setTheme(CYBERPUNK_THEME, CYBERPUNK_TEXT);
+                                    break;
+                                default:
+                                    printSlowly(RED_BG + WHITE_TEXT + "Invalid theme option" + RESET);
+                                    System.out.println();
+                            }
+                        } catch (NumberFormatException e) {
+                            printSlowly(RED_BG + WHITE_TEXT + "Invalid input for theme option" + RESET);
+                            System.out.println();
+                        }
                         break;
                     case "5":
+                        clearHistory();
+                        break;
+                    case "6":
                         inSettings = false;
                         break;
                     default:
@@ -436,11 +487,16 @@ public class Main {
                 } // learned this type of error handling from python and it is really useful.
     }
 
-    static void setTheme(String bgColor) {
-        System.out.print("\033[H\033[2J");
-        System.out.flush();
-        System.out.print(bgColor);
+    static void setTheme(String terminalColor, String textColor) {
+        currentTerminalTheme = terminalColor;
+        currentTheme = textColor;
+        System.out.print(RESET);
+        System.out.print(RESET_TERMINAL_COLORS);
+        System.out.print(currentTerminalTheme);
+        System.out.print(currentTheme);
+        System.out.print("\033[H\033[2J\033[3J");
         System.out.flush();
     }
 
 }
+

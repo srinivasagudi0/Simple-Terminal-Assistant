@@ -1,3 +1,2 @@
-Hello
-WHat
+settings
 exit

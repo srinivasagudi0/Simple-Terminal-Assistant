@@ -27,3 +27,7 @@ will add these at the end
 - import function
 - typing animation (Coolest feature but not hard)
 - Add terminal colors and style 
+- change the terminal background 
+
+## AI Usage
+- Used AI only to know stuff and for color themes in the app (because they were really complex). Everything else is learnt and written by me.
