@@ -125,6 +125,14 @@ public class Main {
                     tellJoke();
                     break;
                 
+                case "scan":
+                    printSlowly("Scanning directory for bugs...");
+                    // this is a fake scan command that is for fun and add some flavor to the terminal. THis one is just for fun.
+                    printSlowly("🌹🌸💐🌷.......................////");
+                    printSlowly("Scan complete! No bugs found.");
+                    System.out.println();
+                    break;
+
                 case "changeUser":
                     changeUsername(sc);
                     break;
@@ -170,7 +178,8 @@ public class Main {
         System.out.println("joke - tell a random joke");
         System.out.println("calc - simple calculator");
         System.out.println("motivate - get a motivational quote");
-        System.out.println("mission - get a random mission to work towards");
+        System.out.println("Scan - scan this directory for bugs");
+        System.out.println("mission - get a random mission to work towards (get assisgned a random task to complete)");
         System.out.println("history - show command history of this current session");
         System.out.println("changeUser - change the user name (will overwrite old name)");
         System.out.println("settings - change settings (coming soon)");
