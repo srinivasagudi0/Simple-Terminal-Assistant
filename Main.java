@@ -72,7 +72,7 @@ public class Main {
 
         while (run) {
 
-            System.out.println(RED_BG + WHITE_TEXT + "Enter command: " + RESET);
+            System.out.println("Enter command: ");
             String cmd = sc.nextLine();
 
             // Store command in history
@@ -149,7 +149,7 @@ public class Main {
     }
     // add settings command that aloows to toggle text animation or speed and change not more but will be helpful in the future as i add more features
     static void showHelp() {
-        System.out.println(RED_BG+ WHITE_TEXT + "=========== Help Menu ===========" + RESET);
+        System.out.println("=========== Help Menu ===========");
         System.out.println("help - show this message");
         System.out.println("hello - greet the assistant");
         System.out.println("time - show current time");
@@ -253,9 +253,9 @@ public class Main {
     }
 
     static void showStartup() {
-        printSlowly(RED_BG+ WHITE_TEXT + "================================" + RESET);
-        printSlowly(RED_BG+ WHITE_TEXT + "             J.A.R.V.I.S" + RESET); 
-        printSlowly(RED_BG+ WHITE_TEXT + "================================" + RESET);
+        printSlowly("================================");
+        printSlowly("             J.A.R.V.I.S"); 
+        printSlowly("================================");
         printSlowly("");
     }
 
@@ -332,7 +332,7 @@ public class Main {
     static void printSlowly(String text) {
         
         for (char c : text.toCharArray()) {
-            System.out.print(RED_BG + WHITE_TEXT + c + RESET);
+            System.out.print(RED_BG + WHITE_TEXT + c + RESET); ////////////////////////// change this to fit the theme of the terminal (will add more themes in the future)
             System.out.flush();
             try {
                 if (animationEnabled) {
@@ -351,7 +351,7 @@ public class Main {
     static void clearConsole() {
         System.out.print("\033[H\033[2J"); // Clear screen
         System.out.flush();
-        System.out.print(RED_BG);         // Reapply theme
+        System.out.print(RED_BG);         // Reapply theme not just red background theme for now but will add more themes in the future
         System.out.flush();
     }
 
@@ -375,7 +375,7 @@ public class Main {
         
         
             while (inSettings) {
-                printSlowly(RED_BG + WHITE_TEXT + "Settings:" + RESET);
+                printSlowly("Settings:");
                 printSlowly("1. Toggle text animation");
                 printSlowly("2. Change text animation speed");
                 printSlowly("3. Change user name");
