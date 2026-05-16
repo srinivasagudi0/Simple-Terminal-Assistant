@@ -10,9 +10,11 @@ public class Main {
     // first comment
     static String nameFile = "name.txt";
 
+    //banner
     static final String RESET = "\033[0m";
     static final String RED_BG = "\033[41m";
     static final String WHITE_TEXT = "\u001B[37m";
+    // end banner
 
     public static void main(String[] args) throws Exception {
 
@@ -22,9 +24,13 @@ public class Main {
 
         showStartup();
 
+        setTheme(RED_BG);
+
         printSlowly("Welcome back " + userName + "!");
 
         runCommands(sc);
+
+        //setTheme(RED_BG);
 
         sc.close();
     }
@@ -426,6 +432,13 @@ public class Main {
                     printSlowly("Error changing animation speed" + e.getMessage());
                     System.out.println();
                 } // learned this type of error handling from python and it is really useful.
+    }
+
+    static void setTheme(String bgColor) {
+        System.out.print("\033[H\033[2J");
+        System.out.flush();
+        System.out.print(bgColor);
+        System.out.flush();
     }
 
 }

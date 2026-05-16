@@ -10,7 +10,7 @@ A simple Java CLI assistant inspired by JARVIS from Iron Man.
 - Time command
 - Beginner-friendly design
 - Calculator!
-- 
+will add these at the end
 
 ## What I Learned
 - Java loops
@@ -25,4 +25,5 @@ A simple Java CLI assistant inspired by JARVIS from Iron Man.
 - Comments
 - Arrays
 - import function
-- typing animation (Coolest feature but not hard) 
+- typing animation (Coolest feature but not hard)
+- Add terminal colors and style 
